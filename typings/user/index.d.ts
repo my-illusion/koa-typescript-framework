@@ -6,7 +6,7 @@ declare namespace USER {
     }
     interface response {
         data: Record<string, unknown> | null
-        code: string
+        code: string | number
         msg: string | null
     }
 }

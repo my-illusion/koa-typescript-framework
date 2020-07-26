@@ -9,7 +9,7 @@ export default class User {
         console.log(ctx.sendError)
         if (!username || !password) {
             return (ctx.body = {
-                code: '400',
+                code: 400,
                 data: null,
                 msg: '参数不合法',
             })
@@ -22,7 +22,7 @@ export default class User {
 
         if (result && !result.length) {
             return (ctx.body = {
-                code: '401',
+                code: 401,
                 data: null,
                 msg: '用户名或者密码错误',
             })
@@ -38,7 +38,7 @@ export default class User {
                 }
             )
             return (ctx.body = {
-                code: '200',
+                code: 200,
                 data: token,
                 msg: '登陆成功',
             })

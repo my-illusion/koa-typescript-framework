@@ -1,6 +1,7 @@
 import Koa from 'koa'
 import KoaBody from 'koa-body'
 import koaJwt from 'koa-jwt'
+import koaCompress from 'koa-compress'
 
 import koaMiddlewares from './middlewares'
 import { secret_key } from './router'
@@ -17,6 +18,7 @@ const app = new Koa()
 //     ctx.response.body = result
 //     next()
 // })
+app.use(koaCompress())
 
 app.use(KoaBody())
 

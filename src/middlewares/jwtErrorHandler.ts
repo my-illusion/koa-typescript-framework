@@ -1,4 +1,6 @@
-const jwtErrorHandler = (ctx, next) => {
+import { Context, Next } from 'koa'
+
+const jwtErrorHandler = (ctx: Context, next: Next): Promise<unknown> => {
     return next().catch((err) => {
         if (err.status === 401) {
             ctx.status = 401

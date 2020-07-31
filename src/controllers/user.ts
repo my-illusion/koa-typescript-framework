@@ -1,12 +1,13 @@
 import jwt from 'jsonwebtoken'
 
 import mysql from '../models/mysql'
-import { secret_key } from '../router'
+import { secret_key, Controller, Post, Get } from '../router'
 
+@Controller('/api')
 export default class User {
-    static async handleLoginIn(ctx): Promise<USER.response> {
+    @Post()
+    async login(ctx): Promise<USER.response> {
         const { username, password } = ctx.request.body
-        console.log(ctx.sendError)
         if (!username || !password) {
             return (ctx.body = {
                 code: 400,
@@ -43,5 +44,13 @@ export default class User {
                 msg: '登陆成功',
             })
         }
+    }
+    @Get()
+    async test(ctx: any): Promise<USER.response> {
+        return (ctx.body = {
+            code: 200,
+            data: { name: '11' },
+            msg: 'success',
+        })
     }
 }
